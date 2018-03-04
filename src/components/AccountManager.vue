@@ -9,9 +9,9 @@
 import AccountEvent from './AccountEvent'
 export default {
   name: 'AccountManager',
-  components: [
+  components: {
     AccountEvent
-  ],
+  },
   props: ['events']
 }
 </script>

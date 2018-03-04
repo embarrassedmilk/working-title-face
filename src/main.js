@@ -13,12 +13,19 @@ Vue.config.productionTip = false
 window.$ = jquery
 window.jQuery = jquery
 
-var signalR = require('signalr-client')
+const signalR = require('@aspnet/signalR')
 
 Vue.prototype.$http = axios
 Vue.prototype.$signalR = signalR
 
 sync(store, router)
+
+const connection = new signalR.HubConnection('http://localhost:7000/events')
+connection.on('eventhappened', data => {
+  // store.dispatch('SOMETHING_HAPPENED', data)
+  console.log(data)
+})
+connection.start()
 
 /* eslint-disable no-new */
 new Vue({
