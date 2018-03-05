@@ -1,9 +1,7 @@
-// import * as types from './mutation-types'
+import * as types from './mutation-types'
 
-export const getAllEvents = ({ commit }) => {
-//   api.getAllEvents(events => {
-//     commit(types.RECEIVE_ALL_EVENTS, {
-//         events
-//     })
-//   })
+export const eventHappened = ({ commit }, event) => {
+  commit(types.SOMETHING_HAPPENED, {
+    event
+  })
 }

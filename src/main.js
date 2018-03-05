@@ -7,13 +7,12 @@ import router from './router'
 import axios from 'axios'
 import { sync } from 'vuex-router-sync'
 import jquery from 'jquery'
+import * as signalR from '@aspnet/signalr-client'
 
 Vue.config.productionTip = false
 
 window.$ = jquery
 window.jQuery = jquery
-
-const signalR = require('@aspnet/signalR')
 
 Vue.prototype.$http = axios
 Vue.prototype.$signalR = signalR
@@ -22,8 +21,7 @@ sync(store, router)
 
 const connection = new signalR.HubConnection('http://localhost:7000/events')
 connection.on('eventhappened', data => {
-  // store.dispatch('SOMETHING_HAPPENED', data)
-  console.log(data)
+  store.dispatch('eventHappened', { entityId: data })
 })
 connection.start()
 

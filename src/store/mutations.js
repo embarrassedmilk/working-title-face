@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import * as types from './mutation-types'
 
 export default {
@@ -11,5 +10,5 @@ export default {
 }
 
 function addEvent (state, event) {
-  Vue.set(state.events, event.entityId, event)
+  state.events = state.events.concat([event])
 }

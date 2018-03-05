@@ -2,7 +2,7 @@
   <div class='ui centered card'>
     <div class='content'>
       <div class='header'>
-        {{ event.stream }}
+        {{ event.entityId }}
       </div>
     </div>
   </div>

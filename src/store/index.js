@@ -6,10 +6,10 @@ import mutations from './mutations'
 Vue.use(Vuex)
 
 const state = {
-  events: {}
+  events: []
 }
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state,
   // getters,
   actions,
@@ -18,3 +18,5 @@ export default new Vuex.Store({
   //   ? [createLogger()]
   //   : []
 })
+
+export default store

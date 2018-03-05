@@ -1,7 +1,7 @@
 <template>
   <div class="account-manager">
     <h1>Events: </h1>
-    <accountevent v-for="event in events" v-bind:event="event" v-bind:key="event.entityId" />
+    <AccountEvent v-for="event in events" v-bind:event="event" v-bind:key="event.entityId" />
   </div>
 </template>
 
@@ -12,7 +12,11 @@ export default {
   components: {
     AccountEvent
   },
-  props: ['events']
+  computed: {
+    events () {
+      return this.$store.state.events
+    }
+  }
 }
 </script>
 
