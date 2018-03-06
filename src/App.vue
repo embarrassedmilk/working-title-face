@@ -2,12 +2,20 @@
   <div id="app">
     <img src="./assets/logo.png">
     <router-view/>
+    <button @click="authenticate('google')">auth Google</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    authenticate: function (provider) {
+      this.$auth.authenticate(provider).then(function () {
+        console.log('whaaaat')
+      })
+    }
+  }
 }
 </script>
 
