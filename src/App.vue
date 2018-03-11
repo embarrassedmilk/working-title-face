@@ -2,7 +2,9 @@
   <div id="app">
     <img src="./assets/logo.png">
     <router-view/>
-    <button @click="authenticate('google')">auth Google</button>
+    <a href="http://localhost:7000/api/account/login">Login</a>
+    <a href="http://localhost:7000/api/account/logout">Logout</a>
+    <button @click="getuser()">Get user</button>
   </div>
 </template>
 
@@ -10,9 +12,11 @@
 export default {
   name: 'App',
   methods: {
-    authenticate: function (provider) {
-      this.$auth.authenticate(provider).then(function () {
-        console.log('whaaaat')
+    getuser: function () {
+      this.$http.get('http://localhost:7000/api/account/getuser', {withCredentials: true}).then(response => {
+        console.log(response)
+      }).catch(e => {
+        console.log(e)
       })
     }
   }
