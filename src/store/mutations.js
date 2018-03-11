@@ -6,6 +6,9 @@ export default {
   },
   [types.SOMETHING_HAPPENED] (state, { event }) {
     addEvent(state, event)
+  },
+  [types.USER_LOGGED_IN] (state, { user }) {
+    state.user = user.user === '' ? undefined : user
   }
 }
 

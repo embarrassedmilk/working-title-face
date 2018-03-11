@@ -99,16 +99,6 @@ module.exports = {
             global: 'jQuery',
           },
           {
-            module: 'semantic',
-            entry: 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js',
-            global: 'semantic',
-          },
-          {
-            module: 'semantic',
-            entry: 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css',
-            global: 'Semantic',
-          },
-          {
             module: 'sweetalert',
             entry: 'https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js',
             global: 'sweetalert',

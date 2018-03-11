@@ -4,11 +4,15 @@ import Vue from 'vue'
 import App from './App'
 import store from './store'
 import router from './router'
-import VueAxios from 'vue-axios'
-// import VueAuthenticate from 'vue-authenticate'
 import axios from 'axios'
-import { sync } from 'vuex-router-sync'
+import Vuetify from 'vuetify'
 import jquery from 'jquery'
+import {
+  sync
+} from 'vuex-router-sync'
+
+import 'vuetify/dist/vuetify.min.css'
+
 import * as signalR from '@aspnet/signalr-client'
 
 Vue.config.productionTip = false
@@ -21,13 +25,19 @@ Vue.prototype.$signalR = signalR
 
 sync(store, router)
 
-Vue.use(VueAxios, axios)
+Vue.use(Vuetify)
 
 const connection = new signalR.HubConnection('http://localhost:7000/events')
 connection.on('eventhappened', data => {
   store.dispatch('eventHappened', { entityId: data })
 })
 connection.start()
+
+axios.get('http://localhost:7000/api/account/getuser', { withCredentials: true }).then(response => {
+  store.dispatch('userFound', { user: response.data })
+}).catch(e => {
+  console.log(e)
+})
 
 /* eslint-disable no-new */
 new Vue({

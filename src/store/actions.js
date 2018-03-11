@@ -5,3 +5,9 @@ export const eventHappened = ({ commit }, event) => {
     event
   })
 }
+
+export const userFound = ({ commit }, user) => {
+  commit(types.USER_LOGGED_IN, {
+    user
+  })
+}
