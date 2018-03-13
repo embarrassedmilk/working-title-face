@@ -7,6 +7,7 @@ import router from './router'
 import axios from 'axios'
 import Vuetify from 'vuetify'
 import jquery from 'jquery'
+import * as client from './api/client'
 import {
   sync
 } from 'vuex-router-sync'
@@ -33,11 +34,11 @@ connection.on('eventhappened', data => {
 })
 connection.start()
 
-axios.get('http://localhost:7000/api/account/getuser', { withCredentials: true }).then(response => {
-  store.dispatch('userFound', { user: response.data })
-}).catch(e => {
-  console.log(e)
-})
+client.get(
+  '/api/account/getuser',
+  (data) => store.dispatch('userFound', { user: data }),
+  (e) => console.log(e)
+)
 
 /* eslint-disable no-new */
 new Vue({
