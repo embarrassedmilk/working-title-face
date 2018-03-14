@@ -7,7 +7,7 @@ export const eventHappened = ({ commit }, event) => {
 }
 
 export const userFound = ({ commit }, user) => {
-  commit(types.USER_LOGGED_IN, {
+  commit(types.USER_FOUND, {
     user
   })
 }
